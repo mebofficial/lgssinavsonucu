@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<title>2025 LGS Sonuç Sistemi</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 20px; }
+  header { background: #003366; color: white; padding: 10px 20px; }
+  a { color: #00aaff; cursor: pointer; text-decoration: underline; }
+  form { margin-top: 20px; background: white; padding: 20px; border-radius: 8px; max-width: 400px; }
+  label { display: block; margin-top: 10px; }
+  input[type="text"] { width: 100%; padding: 8px; margin-top: 5px; }
+  button { margin-top: 15px; padding: 10px 20px; background: #003366; color: white; border: none; cursor: pointer; border-radius: 4px; }
+  #errorPage { display: none; text-align: center; margin-top: 50px; }
+  #errorPage h1 { font-size: 72px; color: #cc0000; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Milli Eğitim Bakanlığı</h1>
+</header>
+
+<p><a id="showForm">2025 LGS PUAN SONUÇ BİLGİLERİ</a></p>
+
+<form id="lgsForm" style="display:none;">
+  <label for="tc">T.C. Kimlik No:</label>
+  <input type="text" id="tc" name="tc" maxlength="11" placeholder="11 haneli T.C. kimlik numarası" required />
+
+  <label for="seri">Seri No:</label>
+  <input type="text" id="seri" name="seri" placeholder="Seri numarası" required />
+
+  <label for="okulNo">Okul Numarası:</label>
+  <input type="text" id="okulNo" name="okulNo" placeholder="Okul numarası" required />
+
+  <button type="submit">Gönder</button>
+</form>
+
+<div id="errorPage">
+  <h1>503</h1>
+  <p>Service Unavailable</p>
+  <p>Şu anda sistem yoğun veya bakımda. Lütfen daha sonra tekrar deneyiniz.</p>
+</div>
+
+<script>
+  const showFormLink = document.getElementById('showForm');
+  const form = document.getElementById('lgsForm');
+  const errorPage = document.getElementById('errorPage');
+
+  showFormLink.addEventListener('click', () => {
+    form.style.display = 'block';
+    showFormLink.style.display = 'none';
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    form.style.display = 'none';
+    errorPage.style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
